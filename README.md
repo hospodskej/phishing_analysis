@@ -15,11 +15,28 @@ A Python-based framework for standardized investigation of phishing emails. Buil
 
 ## Samples
 
-+------------------------------------+------------------------------------------+------------+-----------------------------------------------------------------------+
-| File                               | Type                                     | Language   | Indicators                                                            |
-+------------------------------------+------------------------------------------+------------+-----------------------------------------------------------------------+
-| bradesco_livelo_phish.eml          | Credential harvester (bank rewards scam) | Portuguese | Domain mismatch, SPF fail, DMARC missing, DigitalOcean VPS origin     |
-| microsoft_unusual_signin.eml       | Credential harvester (Microsoft account) | English    | Domain mismatch, Reply-To Gmail, SPF none, DKIM none, tracking pixel |
-| zonnepanelen_phish.eml             | Data collection scam (solar panel quotes)| Dutch      | Three-domain mismatch, SPF none, DKIM none, DMARC none, click tracker|
-| legit_google_alert.eml             | Legitimate security notification         | English    | All authentication passes, no mismatch (for comparison)               |
-+------------------------------------+------------------------------------------+------------+-----------------------------------------------------------------------+
+**bradesco_livelo_phish.eml**
+- Type: Credential harvester (bank rewards scam)
+- Language: Portuguese
+- Indicators: Domain mismatch, SPF fail, DMARC missing, DigitalOcean VPS origin
+
+**microsoft_unusual_signin.eml**
+- Type: Credential harvester (Microsoft account)
+- Language: English
+- Indicators: Domain mismatch, Reply-To Gmail, SPF none, DKIM none, tracking pixel
+
+**zonnepanelen_phish.eml**
+- Type: Data collection scam (solar panel quotes)
+- Language: Dutch
+- Indicators: Three-domain mismatch, SPF none, DKIM none, DMARC none, click tracker
+
+## Investigation Workflow
+
+1. Obtain the email in `.eml` format
+2. Run: `uv run python -m analyzer.email_analyzer <path/to/email.eml>`
+3. Review the generated report
+4. Escalate based on findings (see `SOP.md` for full procedure)
+
+## License
+
+MIT
